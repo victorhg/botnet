@@ -4,6 +4,7 @@ Created on Apr 1, 2010
 @author: victorhg
 '''
 import unittest
+from botnet import BotnetJabberClient
 
 
 class Test(unittest.TestCase):

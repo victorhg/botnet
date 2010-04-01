@@ -40,7 +40,7 @@ class TestGeoApi(unittest.TestCase):
 
 class TestWeatherRSS(unittest.TestCase):
     def testRssAccess(self):
-        yahoo = YahooGeoPlanetSearch()
+        yahoo = YahooWeatherSearch()
         woeid_dublin = 455827
         yahoo.forecast(woeid_dublin)
 
