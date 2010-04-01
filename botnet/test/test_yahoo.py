@@ -11,7 +11,6 @@ class Test(unittest.TestCase):
     
     def setUp(self):
         self.yahoo = YahooWeatherSearch()
-        
 
     def test_return_woeid(self):
         woeid_dublin = 560743 #from yahoo
@@ -24,6 +23,14 @@ class Test(unittest.TestCase):
         self.yahoo.place_search("Sao Paulo")
         self.assertEqual(1, self.yahoo.num_places())
         self.assertEqual(woeid_dublin, self.yahoo.woeid())
+        
+    def test_number_places_without_search(self):
+        self.assertRaises(SearchNotPlacedError, self.yahoo.num_places)
+        
+    
+    def test_woeid_without_search(self):
+        self.assertRaises(SearchNotPlacedError, self.yahoo.woeid)
+        
         
     def test_invalid_search(self):
         self.yahoo.place_search("John Joe Town")
