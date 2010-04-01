@@ -9,6 +9,9 @@ import datetime
 
 class SystemInfoJabberBot(JabberBot):
     
+    @botcmd
+    def weather(self, mess, args):
+        return "Typed: args"+ args.__str__()
     
     @botcmd
     def hello(self, mess, args):

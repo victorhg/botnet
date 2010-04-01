@@ -7,5 +7,11 @@ Yahoo! Application ID
 Yahoo! GeoPlanet API
 http://developer.yahoo.com/geo/geoplanet/guide/api_docs.html
 
+Yahoo! Weather forecast
+http://developer.yahoo.com/weather/
+
+Dealling with rss and yahoo
+http://developer.yahoo.com/python/python-xml.html
+
 SimpleJSON library
 http://simplejson.googlecode.com/svn/tags/simplejson-2.1.0/docs/index.html

@@ -6,11 +6,10 @@ Created on Mar 31, 2010
 import unittest
 from yahoo  import *
 
-class Test(unittest.TestCase):
+class TestGeoApi(unittest.TestCase):
 
-    
     def setUp(self):
-        self.yahoo = YahooWeatherSearch()
+        self.yahoo = YahooGeoPlanetSearch()
 
     def test_return_woeid(self):
         woeid_dublin = 560743 #from yahoo
@@ -36,6 +35,14 @@ class Test(unittest.TestCase):
         self.yahoo.place_search("John Joe Town")
         self.assertEqual(0, self.yahoo.num_places())
         self.assertRaises(InvalidSearchError, self.yahoo.woeid)
+
+
+
+class TestWeatherRSS(unittest.TestCase):
+    def testRssAccess(self):
+        yahoo = YahooGeoPlanetSearch()
+        woeid_dublin = 455827
+        yahoo.forecast(woeid_dublin)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_return_woeid']

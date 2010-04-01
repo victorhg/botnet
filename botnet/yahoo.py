@@ -15,7 +15,7 @@ class InvalidSearchError(Exception):
         self.value = "Wrong search"
 
 
-class YahooWeatherSearch():
+class YahooGeoPlanetSearch():
     YAHOO_APP_ID="4h7YbM3V34H8fWjCUpjrrpnJJ0Lb3K8E7BwVWvjKIePelC9TVM2g4RYA3x0XTc2_sm2DDNFvtz9"
     def __init__(self):
         self.YAHOO_SEARCH_URL = "http://where.yahooapis.com/v1/places.q('{0}')?format=json&appid={1}"
