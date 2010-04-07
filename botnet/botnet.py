@@ -5,6 +5,7 @@ Created on Apr 1, 2010
 '''
 from jabberbot import JabberBot, botcmd
 from yahoo import YahooGeoPlanetSearch, YahooWeatherSearch
+import finance
 
 BOT_USER = 'bot.internet@jabber-br.org'
 BOT_PASS = '123456'
@@ -21,6 +22,12 @@ class BotnetJabberClient(JabberBot):
         woeid = self.geoPlanet.place_search(args).woeid()
         result = self.format_weather_result(self.yahooWeather.forecast(woeid))
         return result
+
+    @botcmd
+    def currency(self, mess, args):
+        """Returns updated information about Dollar Quotation"""
+        return finance.exchange_rate()
+        
         
     def format_weather_result(self, result):
         model_header = "{0}\n {1} C - {2} \n Forecasts\n"

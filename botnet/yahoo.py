@@ -53,7 +53,7 @@ class YahooGeoPlanetSearch():
     
 class YahooWeatherSearch():
     WEATHER_NS = 'http://xml.weather.yahoo.com/ns/rss/1.0'
-    WEATHER_URL = 'http://xml.weather.yahoo.com/forecastrss?w={0}&u=c'
+    WEATHER_URL = 'http://xml.weather.yahoo.com/forecastrss?w={0}&u='
 
     def forecast(self, woeid):
         url = YahooWeatherSearch.WEATHER_URL.format(woeid)
