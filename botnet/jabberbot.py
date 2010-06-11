@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+
+# Victor Hugo Germano Alterations (Jun /Jul 2010)
+# - integrated Eliza NLP on unkown commands
+# - ipmroved connect method in order to be able to connect on gtalk service
+#
+
 # JabberBot: A simple jabber/xmpp bot framework
 # Copyright (c) 2007-2009 Thomas Perl <thpinfo.com>
 #
@@ -51,7 +57,6 @@ class JabberBot(object):
     
     
     def presence_handler(self, conn, msg):
-        print msg
         msg_type = msg.getType()
         who = msg.getFrom()
         if msg_type == "subscribe":
@@ -99,15 +104,6 @@ class JabberBot(object):
         return self.conn
 
     def quit( self):
-        """Stop serving messages and exit.
-        
-        I find it is handy for development to run the 
-        jabberbot in a 'while true' loop in the shell, so 
-        whenever I make a code change to the bot, I send 
-        the 'reload' command, which I have mapped to call
-        self.quit(), and my shell script relaunches the 
-        new version.
-        """
         self.__finished = True
 
     def send( self, user, text, in_reply_to = None):
