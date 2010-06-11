@@ -27,7 +27,10 @@ class YahooGeoPlanetSearch():
         """Set up the searcher structure with information to retrieve the Object from Yahoo! Weather engine"""
         url = self.YAHOO_SEARCH_URL.format(city, YahooGeoPlanetSearch.YAHOO_APP_ID)
         result_json = urllib.urlopen(url).read()
+        
         self.last_search = json.loads(result_json)
+        if self.last_search.has_key('error'):
+            raise InvalidSearchError()
         return self
         
    

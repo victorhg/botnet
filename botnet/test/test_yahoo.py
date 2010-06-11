@@ -29,14 +29,18 @@ class TestGeoApi(unittest.TestCase):
     
     def test_woeid_without_search(self):
         self.assertRaises(SearchNotPlacedError, self.yahoo.woeid)
-        
-        
+    
+    def test_ivanlid_search_expect_error(self):
+        try:
+            self.yahoo.place_search("")
+            self.fail("should not arrive here")
+        except InvalidSearchError:
+            pass
+                          
     def test_invalid_search(self):
         self.yahoo.place_search("John Joe Town")
         self.assertEqual(0, self.yahoo.num_places())
         self.assertRaises(InvalidSearchError, self.yahoo.woeid)
-
-
 
 class TestWeatherRSS(unittest.TestCase):
     def testRssAccess(self):

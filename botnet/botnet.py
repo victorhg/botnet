@@ -3,28 +3,34 @@ Created on Apr 1, 2010
 
 @author: victorhg
 '''
-from jabberbot import JabberBot, botcmd
-from yahoo import YahooGeoPlanetSearch, YahooWeatherSearch
+from jabberbot import JabberBot
+from yahoo import YahooGeoPlanetSearch, YahooWeatherSearch, InvalidSearchError
 import finance
 
-BOT_USER = 'bot.internet@jabber-br.org'
-BOT_PASS = '123456'
+#BOT_USER = 'bot.internet@jabber-br.org'
+#BOT_PASS = '123456'
+BOT_USER = 'pretenho@gmail.com'
+BOT_PASS = 'venus302'
+
 class BotnetJabberClient(JabberBot):
 
     def __init__(self):
+        super(BotnetJabberClient,self).__init__(BOT_USER, BOT_PASS, server = "talk.google.com", port = 5222 )
         self.geoPlanet = YahooGeoPlanetSearch()
         self.yahooWeather = YahooWeatherSearch()
-        JabberBot.__init__(self, BOT_USER, BOT_PASS)
 
-    @botcmd
-    def weather(self, mess, args):
+    def bot_weather(self, mess, args):
         """Returns the forecasts for any place. Usage: weather [City Name]"""
-        woeid = self.geoPlanet.place_search(args).woeid()
-        result = self.format_weather_result(self.yahooWeather.forecast(woeid))
-        return result
+        try:
+            woeid = self.geoPlanet.place_search(args).woeid()
+            result = self.format_weather_result(self.yahooWeather.forecast(woeid))
+            return result
+        except InvalidSearchError:
+            return "Invalid Search, plz try again"
+        except Exception:
+            return "Unknow error... sorry about that"
 
-    @botcmd
-    def currency(self, mess, args):
+    def bot_currency(self, mess, args):
         """Returns updated information about Dollar Quotation"""
         return finance.exchange_rate()
         
@@ -39,8 +45,7 @@ class BotnetJabberClient(JabberBot):
         
         return forecast_result
     
-    @botcmd
-    def hello(self, mess, args):
+    def bot_hello(self, mess, args):
         """Greetings"""
         return "Hi! how can I help you? Type 'help' to see available commands"
     

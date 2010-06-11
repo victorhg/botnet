@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse-pydev version="1.0"?>
+
+<pydev_project>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/bot.internet/botnet</path>
+<path>/bot.internet/deps/jabberbot</path>
+</pydev_pathproperty>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
+<pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/Library/Python/2.6/site-packages/xmpppy-0.5.0rc1-py2.6.egg</path>
+<path>/Library/Python/2.6/site-packages/simplejson-2.1.0-py2.6-macosx-10.6-universal.egg</path>
+</pydev_pathproperty>
+</pydev_project>
