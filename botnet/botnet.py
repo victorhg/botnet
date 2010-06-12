@@ -9,8 +9,8 @@ import finance
 
 #BOT_USER = 'bot.internet@jabber-br.org'
 #BOT_PASS = '123456'
-BOT_USER = 'pretenho@gmail.com'
-BOT_PASS = 'venus302'
+BOT_USER = 'pycon.bot@gmail.com'
+BOT_PASS = 'pycon123'
 
 class BotnetJabberClient(JabberBot):
 

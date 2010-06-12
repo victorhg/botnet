@@ -60,6 +60,7 @@ class JabberBot(object):
         msg_type = msg.getType()
         who = msg.getFrom()
         if msg_type == "subscribe":
+            print msg
             conn.send(xmpp.Presence(to=who, typ='subscribed'))
             conn.send(xmpp.Presence(to=who, typ='subscribe'))
             
