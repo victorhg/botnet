@@ -82,11 +82,14 @@ gReflections = {
 #  %1, %2, etc.  
 #----------------------------------------------------------------------
 gPats = [
+  [r'What\'s your name?',
+   ["I'm a bot for pycon Ireland, ad you?"]],
   [r'(.*) command(.*)',
   [ "Need some help? Ask me nicely, plz type 'help'"
          ]],
   [r'I need (.*)',
-  [  "Why do you need %1?",
+  [ "Need some help? Ask me nicely, plz type 'help' and see what I can do for you ;)",
+    "Why do you need %1?",
     "Would it really help you to get %1?",
     "Are you sure you need %1?"]],
   
