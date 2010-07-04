@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
 
     def test_invalid_search(self):
         bot = BotnetJabberClient()
-        result = bot.bot_weather("", "")
+        result = bot.weather("", "")
         self.assertEqual ("Invalid Search, plz try again", result)
     
         
