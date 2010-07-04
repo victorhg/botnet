@@ -82,12 +82,9 @@ class GTalkBot(object):
     def unknown_command(self, mess, cmd, args):
         return  "Unknown command: %s\n\n Type 'help' to see available commands" % cmd
         
-    def send( self, user, text, in_reply_to = None):
+    def send( self, user, text):
         """Sends a simple message to the specified user."""
         mess = xmpp.Message( user, text)
-        if in_reply_to:
-            mess.setThread( in_reply_to.getThread())
-            mess.setType( in_reply_to.getType())
         self.connect().send( mess)
         
     @botcommand
