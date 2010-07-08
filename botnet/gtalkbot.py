@@ -71,7 +71,7 @@ class GTalkBot(object):
         else:
             reply = self.unknown_command( mess, cmd, args) 
             
-        self.send( mess.getFrom(), reply, mess)
+        self.send( mess.getFrom(), reply)
 
         
     def registerHandlers(self, conn):   
@@ -85,7 +85,7 @@ class GTalkBot(object):
     def send( self, user, text):
         """Sends a simple message to the specified user."""
         mess = xmpp.Message( user, text)
-        self.connect().send( mess)
+        self.conn.send( mess)
         
     @botcommand
     def help(self, mess, args):

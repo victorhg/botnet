@@ -5,6 +5,7 @@ Created on Apr 1, 2010
 '''
 import finance
 from eliza import eliza
+from pyconireland import PyconIreland
 from gtalkbot import GTalkBot, botcommand
 from yahoo import YahooGeoPlanetSearch, YahooWeatherSearch, InvalidSearchError
 
@@ -18,6 +19,7 @@ class BotnetJabberClient(GTalkBot):
         super(BotnetJabberClient,self).__init__(self.BOT_USER, self.BOT_PASS)
         self.geoPlanet = YahooGeoPlanetSearch()
         self.yahooWeather = YahooWeatherSearch()
+        self.pyconIreland = PyconIreland()
 
     @botcommand
     def hello(self, mess, args):
@@ -42,7 +44,19 @@ class BotnetJabberClient(GTalkBot):
         """Returns updated information about Dollar Quotation"""
         return finance.exchange_rate()
         
+        
+    @botcommand
+    def talk(self, mess, args):
+        "Retrieves information about talks at Pycon Ireland 2010. Search for the authors name or the talks name"
+        return self.pyconIreland.find_talk(args)
+    
+    @botcommand
+    def speaker(self, mess, args):
+        """Returns Information about any of the speakers at Pycon Ireland 2010"""
+        return self.pyconIreland.find_speaker(args)
+        
     def unknown_command( self, mess, cmd, args):
+        """Puting some mojo here to make the bot answer as Eliza when wrong command is given""" 
         return self.eliza.respond(mess.getBody())
         
     

