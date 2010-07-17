@@ -33,16 +33,11 @@ class GTalkBot(object):
         self.conn = None
         self.register_commands()
         
-    def register_commands(self):
-        self.commands = {}
-        for name, value in inspect.getmembers(self):
-            if inspect.ismethod(value) and getattr(value, '_gbot_command', False):
-                self.log('Registered command: %s' % name)
-                self.commands[name] = value
+    
     
     def presence_handler(self, conn, msg):
         """ Always accepts a subscribe request from any user. 
-            Subscribe this method to change it"""
+            override this method to change it"""
         msg_type = msg.getType()
         who = msg.getFrom()
         if msg_type == "subscribe":
@@ -51,14 +46,15 @@ class GTalkBot(object):
             conn.send(xmpp.Presence(to=who, typ='subscribe'))
             
             
-    def callback_message( self, conn, mess):
+            
+    def message_handler( self, conn, mess):
         """Messages sent to the bot will arrive here. Command handling + routing is done in this function.
             Reference: Thomas Perl <thp@thpinfo.com>"""
         text = mess.getBody()
         if not text:
             return
 
-        self.log('Received message from %s: %s'%(mess.getFrom(), text))
+        self.log('Message from %s: %s'%(mess.getFrom(), text))
         if ' ' in text:
             command, args = text.split(' ',1)
         else:
@@ -75,7 +71,7 @@ class GTalkBot(object):
 
         
     def registerHandlers(self, conn):   
-        conn.RegisterHandler('message', self.callback_message)
+        conn.RegisterHandler('message', self.message_handler)
         conn.RegisterHandler('presence', self.presence_handler)
      
    
@@ -109,7 +105,7 @@ class GTalkBot(object):
         return self.conn
     
     
-    def run_server(self):
+    def run_client(self):
         if self.connect():
             self.log('GTalkBot Connected...')
         else:
@@ -131,3 +127,10 @@ class GTalkBot(object):
     
     def log(self, str):
         print str 
+    
+    def register_commands(self):
+        self.commands = {}
+        for name, value in inspect.getmembers(self):
+            if inspect.ismethod(value) and getattr(value, '_gbot_command', False):
+                self.log('Registering command: %s' % name)
+                self.commands[name] = value

@@ -1,3 +1,15 @@
+#       DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+#                Version 1, July 2010
+
+#Copyright (C) 2010 VICTOR HUGO GERMANO, Earth
+#Everyone is permitted to copy and distribute verbatim or modified
+# copies of this license document, and changing it is allowed as long
+# as the name is changed.
+
+#           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+#  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+#
+# 0. You just DO WHAT THE FUCK YOU WANT TO.
 '''
 Created on Apr 1, 2010
 
@@ -22,12 +34,6 @@ class BotnetJabberClient(GTalkBot):
         self.pyconIreland = PyconIreland()
 
     @botcommand
-    def hello(self, mess, args):
-        """Greetings"""
-        return "Hi! how can I help you? Type 'help' to see available commands"
-    
-
-    @botcommand
     def weather(self, mess, args):
         """Returns the forecasts for any place. Usage: weather [City Name]"""
         try:
@@ -41,7 +47,7 @@ class BotnetJabberClient(GTalkBot):
 
     @botcommand
     def currency(self, mess, args):
-        """Returns updated information about Dollar Quotation"""
+        """Returns updated information about Dollar currency"""
         return finance.exchange_rate()
         
         
@@ -56,7 +62,7 @@ class BotnetJabberClient(GTalkBot):
         return self.pyconIreland.find_speaker(args)
         
     def unknown_command( self, mess, cmd, args):
-        """Puting some mojo here to make the bot answer as Eliza when wrong command is given""" 
+        """Putting some Mojo here to make the bot answer as Eliza when wrong command is given""" 
         return self.eliza.respond(mess.getBody())
         
     

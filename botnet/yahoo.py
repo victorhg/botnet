@@ -42,7 +42,6 @@ class YahooGeoPlanetSearch():
         self.validateSearchPlaced()
         return self.last_search['places']['count']
     
-    
     def woeid(self):
         self.validateSearchPlaced()
         places_attrs = self.last_search['places']
@@ -51,6 +50,9 @@ class YahooGeoPlanetSearch():
             raise InvalidSearchError() 
         
         return places_attrs['place'][0]['woeid']
+    
+    
+    
     
     
     

@@ -18,7 +18,7 @@ class PyconIreland(object):
         speaker_name = speaker_name.lower().replace(' ', '-')
         search_results = self.soup.findAll('div', id=re.compile('.*speaker-.*%s.*' % speaker_name ))
         if not len(search_results): 
-            return 'No speaker was found. Are you in the right conference? Pycon Ireland2010? Try again plz... :)'
+            return 'No speaker was found. Are you in the right conference? Pycon Ireland 2010? Try again plz... :)'
             
         result = ''
         for speaker in search_results:
@@ -28,7 +28,7 @@ class PyconIreland(object):
         return result
     
     def find_talk(self, content_name):
-        "Retrieves information about talks. Search for the authors name or the talks name"
+        "Retrieves information about talks. Search for the authors name and the talk title"
         content_name = content_name.lower().replace(' ', '-')
         result = ''
         #Searching for speaker' name
